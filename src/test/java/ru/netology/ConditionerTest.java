@@ -1,38 +1,30 @@
 package ru.netology;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConditionerTest {
     @Test
-    public void shouldCreate() {
+    public void shouldGetAndSet() {
         Conditioner conditioner = new Conditioner();
+        String expected = "Кондишн";
+
+        assertNull(conditioner.getName());
+        conditioner.setName(expected);
+        assertEquals(expected, conditioner.getName());
     }
 
     @Test
-    public void shouldInitFieldToZeroValues() {
+    public void increaseCurrentTemperatureTest(){
         Conditioner conditioner = new Conditioner();
-        assertNull(conditioner.name);
-        assertEquals(0, conditioner.maxTemperature);
-        assertEquals(0, conditioner.minTemperature);
-        assertEquals(0, conditioner.currentTemperature);
-        assertFalse(conditioner.on);
+        conditioner.setMaxTemperature(40);
+        conditioner.setCurrentTemperature(20);
+        conditioner.increaseCurrentTemperature(20);
+        assertEquals(21, conditioner.getCurrentTemperature());
+        conditioner.setCurrentTemperature(40);
+        conditioner.increaseCurrentTemperature(40);
+        assertEquals(40, conditioner.getCurrentTemperature());
     }
 
-    @Test
-    @Disabled
-    public void shouldThrowNPE() {
-        Conditioner conditioner = new Conditioner();
-        assertEquals(0, conditioner.name.length());
-    }
-
-    @Test
-    public void shouldChangeFields() {
-        Conditioner conditioner = new Conditioner();
-        assertEquals(0, conditioner.currentTemperature);
-        conditioner.currentTemperature = -100;
-        assertEquals(-100, conditioner.currentTemperature);
-    }
 }
