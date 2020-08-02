@@ -40,4 +40,20 @@ class ConditionerTest {
         conditioner.decreaseCurrentTemperature(10);
         assertEquals(10, conditioner.getCurrentTemperature());
     }
+
+    @Test
+    public void shouldChangeFieldTest(){
+        Conditioner conditioner = new Conditioner();
+        conditioner.setMaxTemperature(40);
+        assertEquals(40,conditioner.getMaxTemperature());
+        conditioner.setMinTemperature(10);
+        assertEquals(10,conditioner.getMinTemperature());
+        conditioner.setCurrentTemperature(30);
+        conditioner.setCurrentTemperature(60);
+        assertEquals(30, conditioner.getCurrentTemperature());
+        conditioner.setCurrentTemperature(5);
+        assertEquals(30, conditioner.getCurrentTemperature());
+        conditioner.setOn(true);
+        assertTrue(conditioner.isOn());
+    }
 }
